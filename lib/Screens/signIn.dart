@@ -12,7 +12,6 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
-
 @override
 Widget build(BuildContext context) {
   return Scaffold(
@@ -51,7 +50,27 @@ Widget build(BuildContext context) {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 20, // Add some space between the text fields and the button
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add your submit button action here
+              },
+              style: ElevatedButton.styleFrom(
+                primary: hexStringToColor("9982C2"),
+                onPrimary: Colors.white, // Text color
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+              ),
+              child: Text(
+                "Sign In",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),
@@ -59,6 +78,7 @@ Widget build(BuildContext context) {
     ),
   );
 }
+
 
 
 TextField reusableTextField(
