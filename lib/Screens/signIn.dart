@@ -31,7 +31,7 @@ Widget build(BuildContext context) {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: reusableTextField(
-                "Enter UserName",
+                "Email",
                 Icons.person_outline,
                 false,
                 _emailTextController,
@@ -43,7 +43,7 @@ Widget build(BuildContext context) {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: reusableTextField(
-                "Enter Password",
+                "Password",
                 Icons.lock_outline,
                 true,
                 _passwordTextController,
@@ -100,7 +100,7 @@ TextField reusableTextField(
       labelStyle: TextStyle(color: Color.fromARGB(255, 26, 13, 13).withOpacity(0.9)),
       filled: true,
       floatingLabelBehavior: FloatingLabelBehavior.never,
-      fillColor: Colors.white.withOpacity(0.3),
+      fillColor: hexStringToColor("9982C2").withOpacity(0.05), // Change fill color
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30.0),
         borderSide: const BorderSide(width: 10, style: BorderStyle.none),
