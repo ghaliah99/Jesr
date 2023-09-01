@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:jesr/utils/colors_utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -9,6 +11,23 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  //text controllers
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signin() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   bool _isPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
@@ -19,42 +38,56 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Container(
           child: Column(
             children: <Widget>[
-              Container(
-                height: 400,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/background1.png'),
-                        fit: BoxFit.fill)),
-                child: Stack(
-                  children: <Widget>[
-                    Positioned(
-                      child: Container(
-                        margin: EdgeInsets.only(top: 0),
-                        child: Center(
-                          child: Text(
-                            "Welcome to JESR",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Ubuntu',
-                            ),
-                          ),
-                        ),
-                      ),
-                      
-                    )
-                  ],
-                ),
+             Container(
+  height: 400,
+  decoration: BoxDecoration(
+    image: DecorationImage(
+      image: AssetImage('assets/images/background1.png'),
+      fit: BoxFit.fill,
+    ),
+  ),
+  child: Stack(
+    children: <Widget>[
+      Positioned(
+        child: Container(
+          margin: EdgeInsets.only(top: 20),
+          child: Center(
+            child: Text(
+              "Welcome to JESR",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Ubuntu',
               ),
-              
+            ),
+          ),
+        ),
+      ),
+      Positioned(
+        left: 130,
+         top: 32,
+        width: 170,
+        height: 200,
+        
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/logoWhite.png'),
+            ),
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+
               Container(
                 child: Stack(
                   children: <Widget>[
                     Positioned(
                       child: Container(
                         margin: EdgeInsets.only(top: 00),
-                        
                         child: Center(
                           child: Text(
                             "Login",
@@ -100,6 +133,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               ),
                             ),
                             child: TextField(
+                              controller: _emailController,
                               style: TextStyle(
                                   fontFamily:
                                       'Ubuntu'), // Apply Ubuntu font family
@@ -119,6 +153,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 children: [
                                   Expanded(
                                     child: TextField(
+                                      controller: _passwordController,
                                       obscureText: !_isPasswordVisible,
                                       style: TextStyle(fontFamily: 'Ubuntu'),
                                       decoration: InputDecoration(
@@ -166,7 +201,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       //BUTTON
                       child: ElevatedButton(
                         onPressed: () {
-                          // Add your login button onPressed logic here
+                          signin();
                         },
                         style: ElevatedButton.styleFrom(
                           primary: const Color.fromARGB(0, 255, 50, 50),
