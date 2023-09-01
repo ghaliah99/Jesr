@@ -23,13 +23,13 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 400,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/background.png'),
+                        image: AssetImage('assets/images/background1.png'),
                         fit: BoxFit.fill)),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
                       child: Container(
-                        margin: EdgeInsets.only(top: 100),
+                        margin: EdgeInsets.only(top: 0),
                         child: Center(
                           child: Text(
                             "Welcome to JESR",
@@ -42,16 +42,19 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                       ),
+                      
                     )
                   ],
                 ),
               ),
+              
               Container(
                 child: Stack(
                   children: <Widget>[
                     Positioned(
                       child: Container(
                         margin: EdgeInsets.only(top: 00),
+                        
                         child: Center(
                           child: Text(
                             "Login",
@@ -108,41 +111,42 @@ class _SignInScreenState extends State<SignInScreen> {
                               ),
                             ),
                           ),
-   Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Container(
-          padding: EdgeInsets.all(4.0),
-
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  obscureText: !_isPasswordVisible,
-                  style: TextStyle(fontFamily: 'Ubuntu'),
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Password",
-                    hintStyle: TextStyle(color: Colors.grey[550]),
-                  ),
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  setState(() {
-                    _isPasswordVisible = !_isPasswordVisible;
-                  });
-                },
-                icon: Icon(
-                  _isPasswordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Container(
+                              padding: EdgeInsets.all(4.0),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: TextField(
+                                      obscureText: !_isPasswordVisible,
+                                      style: TextStyle(fontFamily: 'Ubuntu'),
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Password",
+                                        hintStyle:
+                                            TextStyle(color: Colors.grey[550]),
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      _isPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -153,7 +157,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         borderRadius: BorderRadius.circular(10),
                         gradient: LinearGradient(
                           colors: [
-                            hexStringToColor("9982C2"),
+                            hexStringToColor("B49EDD"),
                             hexStringToColor("9982C2"),
                           ],
                         ),
@@ -194,6 +198,87 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyle(
                           color: hexStringToColor("9982C2"),
                           fontFamily: 'Ubuntu',
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 70),
+
+//Or Label
+/*
+                    Row(children: <Widget>[
+                      Expanded(child: Divider(color: Colors.black)),
+                      Text("or",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: hexStringToColor("9982C2"),
+                            fontFamily: 'Ubuntu',
+                          )),
+                      Expanded(child: Divider(color: Colors.black)),
+                    ]),*/
+/*
+                    //SignUp
+                    SizedBox(height: 30),
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                          colors: [
+                            hexStringToColor("9982C2"),
+                            hexStringToColor("9982C2"),
+                          ],
+                        ),
+                      ),
+
+                      //BUTTON
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Add your login button onPressed logic here
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color.fromARGB(0, 255, 50, 50),
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: EdgeInsets.symmetric(vertical: 15),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Ubuntu',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+*/
+                    SizedBox(height: 65),
+
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16.0),
+                        child: Text.rich(
+                          TextSpan(
+                            text: "Don't have an account? ",
+                            style: TextStyle(
+                              color: Colors.grey[600],
+                              fontFamily: 'Ubuntu',
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "Sign up",
+                                style: TextStyle(
+                                  color: hexStringToColor("00B7B1"),
+                                  fontFamily: 'Ubuntu',
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
