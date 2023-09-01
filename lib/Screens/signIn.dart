@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:jesr/utils/colors_utils.dart';
+
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -9,6 +9,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  bool _isPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,25 +19,22 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Container(
           child: Column(
             children: <Widget>[
-              	            Container(
-	              height: 400,
-	              decoration: BoxDecoration(
-	                image: DecorationImage(
-	                  image: AssetImage('assets/images/background.png'),
-	                  fit: BoxFit.fill
-	                )
-                ),
- child: Stack(
-	                children: <Widget>[
-
-  Positioned(
+              Container(
+                height: 400,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/background.png'),
+                        fit: BoxFit.fill)),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
                       child: Container(
                         margin: EdgeInsets.only(top: 100),
                         child: Center(
                           child: Text(
                             "Welcome to JESR",
                             style: TextStyle(
-                              color:Colors.white,
+                              color: Colors.white,
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Ubuntu',
@@ -45,22 +43,20 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                     )
-	                ],
-	              ),
+                  ],
+                ),
               ),
-
-Container(
-child: Stack(
-	                children: <Widget>[
-
-  Positioned(
+              Container(
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
                       child: Container(
                         margin: EdgeInsets.only(top: 00),
                         child: Center(
                           child: Text(
                             "Login",
                             style: TextStyle(
-                              color:hexStringToColor("9982C2"),
+                              color: hexStringToColor("9982C2"),
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Ubuntu',
@@ -69,10 +65,10 @@ child: Stack(
                         ),
                       ),
                     )
-	                ],
-	              ),
-),
-              Padding( 
+                  ],
+                ),
+              ),
+              Padding(
                 padding: EdgeInsets.all(30.0),
                 child: Column(
                   children: <Widget>[
@@ -101,7 +97,9 @@ child: Stack(
                               ),
                             ),
                             child: TextField(
-                                  style: TextStyle(fontFamily: 'Ubuntu'), // Apply Ubuntu font family
+                              style: TextStyle(
+                                  fontFamily:
+                                      'Ubuntu'), // Apply Ubuntu font family
 
                               decoration: InputDecoration(
                                 border: InputBorder.none,
@@ -110,18 +108,41 @@ child: Stack(
                               ),
                             ),
                           ),
-                          Container(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextField(
-                                  style: TextStyle(fontFamily: 'Ubuntu'), // Apply Ubuntu font family
+   Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Container(
+          padding: EdgeInsets.all(4.0),
 
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Password",
-                                hintStyle: TextStyle(color: Colors.grey[550]),
-                              ),
-                            ),
-                          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  obscureText: !_isPasswordVisible,
+                  style: TextStyle(fontFamily: 'Ubuntu'),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Password",
+                    hintStyle: TextStyle(color: Colors.grey[550]),
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    _isPasswordVisible = !_isPasswordVisible;
+                  });
+                },
+                icon: Icon(
+                  _isPasswordVisible
+                      ? Icons.visibility
+                      : Icons.visibility_off,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
                         ],
                       ),
                     ),
@@ -138,14 +159,13 @@ child: Stack(
                         ),
                       ),
 
-                      
                       //BUTTON
                       child: ElevatedButton(
                         onPressed: () {
                           // Add your login button onPressed logic here
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.transparent,
+                          primary: const Color.fromARGB(0, 255, 50, 50),
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -154,24 +174,27 @@ child: Stack(
                         ),
                         child: Center(
                           child: Text(
-      
                             "Login",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Ubuntu',
-
                             ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 70),
-                    Text(
-                      "Forgot Password?",
-                      style: TextStyle(
-                        color: Color.fromRGBO(143, 148, 251, 1),
-                        fontFamily: 'Ubuntu',
+                    SizedBox(height: 6),
+                    GestureDetector(
+                      onTap: () {
+                        // Add your logic to handle the click event
+                      },
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                          color: hexStringToColor("9982C2"),
+                          fontFamily: 'Ubuntu',
+                        ),
                       ),
                     ),
                   ],
