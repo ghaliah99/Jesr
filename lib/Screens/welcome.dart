@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:jesr/Screens/signin.dart';
+import 'package:jesr/Screens/Authentication/signin.dart';
 import 'package:jesr/utils/colors_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:jesr/Screens/signin.dart';
+import 'package:jesr/Screens/Authentication/signin.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
