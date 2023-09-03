@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jesr/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'Screens/signin.dart';
-import '../Screens/main_page.dart';
-import 'package:jesr/Screens/main_page.dart';
+import 'Screens/Authentication/signin.dart';
+import 'Screens/Authentication/main_page.dart';
+import 'Screens/Authentication/signUpTeacher.dart';
+import 'package:jesr/Screens/Authentication/main_page.dart';
 
 
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
     //  home: const SignInScreen(),
     home: main_page(),
+  // home: SignupScreen(),
     );
   }
 }
